@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user, signIn, logOut } = useAuth();
 
   return (
     <nav className="border-b border-border">
@@ -62,7 +62,7 @@ const Navbar = () => {
               </DropdownMenu>
             </div>
           ) : (
-            <Button onClick={() => {}} variant="default" className="bg-brand-600 hover:bg-brand-700">
+            <Button onClick={signIn} variant="default" className="bg-brand-600 hover:bg-brand-700">
               Get Started
             </Button>
           )}
