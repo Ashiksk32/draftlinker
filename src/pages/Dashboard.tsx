@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import { useAuth } from '@/contexts/AuthContext';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileText, Plus, Share2, Calendar, Clock, User } from 'lucide-react';
+import { FileText, Plus, Share2, Calendar, Clock, User, ChevronRight, ListFilter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -46,38 +46,43 @@ const Dashboard = () => {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
-        {/* Dashboard Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">My Dashboard</h1>
-          <p className="text-gray-600">Welcome back, {user?.displayName || 'User'}! Manage your letters and drafts.</p>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <Link to="/editor" className="col-span-1">
-            <Button className="w-full bg-brand-600 hover:bg-brand-700 h-12 shadow-md">
-              <Plus className="mr-2 h-5 w-5" /> Create New Letter
+        {/* Welcome Banner */}
+        <div className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 shadow-sm border border-blue-100">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome back, {user?.displayName || 'User'}!</h1>
+          <p className="text-gray-600 mb-4">Here's an overview of your letters and recent activity.</p>
+          <Link to="/editor" className="inline-flex">
+            <Button className="bg-brand-600 hover:bg-brand-700 h-10 shadow-sm group">
+              <Plus className="mr-2 h-5 w-5 transition-transform group-hover:rotate-90" /> Create New Letter
             </Button>
           </Link>
-          <Card className="col-span-3 bg-gradient-to-r from-blue-50 to-indigo-50 border-none shadow">
-            <CardContent className="p-4 flex flex-col md:flex-row justify-between items-center">
-              <div>
-                <h3 className="font-semibold text-lg text-gray-800">Quick Stats</h3>
-                <p className="text-gray-600 text-sm">Track your letter writing progress</p>
+        </div>
+
+        {/* Quick Stats */}
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Quick Overview</h2>
+          <Card className="bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
+            <CardContent className="p-6 flex flex-col md:flex-row justify-between items-center">
+              <div className="w-full md:w-auto grid grid-cols-3 gap-8 md:flex md:space-x-16">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-brand-600">{letters.length}</div>
+                  <div className="text-sm text-gray-500 mt-1">Total Letters</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-amber-500">2</div>
+                  <div className="text-sm text-gray-500 mt-1">In Progress</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-500">1</div>
+                  <div className="text-sm text-gray-500 mt-1">Completed</div>
+                </div>
               </div>
-              <div className="flex space-x-8 mt-4 md:mt-0">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-brand-600">{letters.length}</div>
-                  <div className="text-xs text-gray-500">Total Letters</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-amber-500">2</div>
-                  <div className="text-xs text-gray-500">In Progress</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-500">1</div>
-                  <div className="text-xs text-gray-500">Completed</div>
-                </div>
+              
+              <div className="mt-6 md:mt-0">
+                <Link to="/editor">
+                  <Button variant="outline" size="sm" className="border-brand-200 text-brand-600 hover:bg-brand-50">
+                    View All <ChevronRight className="h-4 w-4 ml-1" />
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
@@ -90,20 +95,20 @@ const Dashboard = () => {
               <FileText className="h-5 w-5 mr-2 text-brand-600" /> My Letters
             </h2>
             <div className="flex space-x-2">
-              <Button variant="outline" size="sm" className="text-gray-600 border-gray-300">
+              <Button variant="outline" size="sm" className="text-gray-600 border-gray-300 flex items-center">
                 <Calendar className="mr-2 h-4 w-4" /> Sort
               </Button>
-              <Button variant="outline" size="sm" className="text-gray-600 border-gray-300">
-                <User className="mr-2 h-4 w-4" /> Filter
+              <Button variant="outline" size="sm" className="text-gray-600 border-gray-300 flex items-center">
+                <ListFilter className="mr-2 h-4 w-4" /> Filter
               </Button>
             </div>
           </div>
           
-          <Card className="shadow-sm border-gray-200">
+          <Card className="shadow-sm border-gray-200 hover:shadow-md transition-shadow duration-200 overflow-hidden">
             <CardContent className="p-0">
               <Table>
                 <TableHeader>
-                  <TableRow>
+                  <TableRow className="bg-gray-50 hover:bg-gray-50">
                     <TableHead>Title</TableHead>
                     <TableHead>Category</TableHead>
                     <TableHead>Status</TableHead>
@@ -113,7 +118,7 @@ const Dashboard = () => {
                 </TableHeader>
                 <TableBody>
                   {letters.map(letter => (
-                    <TableRow key={letter.id}>
+                    <TableRow key={letter.id} className="hover:bg-gray-50/70">
                       <TableCell className="font-medium">
                         <div className="flex items-center">
                           <FileText className="h-4 w-4 mr-2 text-brand-600" />
@@ -137,13 +142,13 @@ const Dashboard = () => {
                         </div>
                       </TableCell>
                       <TableCell className="text-right">
-                        <div className="flex justify-end space-x-2">
+                        <div className="flex justify-end space-x-1">
                           <Link to={`/editor/${letter.id}`}>
-                            <Button variant="ghost" size="sm" className="text-brand-600">
+                            <Button variant="ghost" size="sm" className="text-brand-600 hover:bg-brand-50 hover:text-brand-700">
                               Edit
                             </Button>
                           </Link>
-                          <Button variant="ghost" size="sm" className="text-gray-500">
+                          <Button variant="ghost" size="sm" className="text-gray-500 hover:bg-gray-50 hover:text-gray-700">
                             <Share2 className="h-4 w-4" />
                           </Button>
                         </div>
@@ -179,11 +184,11 @@ const Dashboard = () => {
           <h2 className="text-xl font-semibold text-gray-800 flex items-center mb-4">
             <Clock className="h-5 w-5 mr-2 text-brand-600" /> Recent Activity
           </h2>
-          <Card className="shadow-sm border-gray-200">
+          <Card className="shadow-sm border-gray-200 hover:shadow-md transition-shadow duration-200">
             <CardContent className="p-4">
               <ul className="space-y-4">
                 {recentActivity.map(activity => (
-                  <li key={activity.id} className="flex items-start">
+                  <li key={activity.id} className="flex items-start group hover:bg-gray-50 p-2 rounded-md transition-colors">
                     <div className="h-9 w-9 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 mr-3">
                       {activity.action.includes('Created') && <Plus className="h-5 w-5" />}
                       {activity.action.includes('Edited') && <FileText className="h-5 w-5" />}
@@ -192,6 +197,13 @@ const Dashboard = () => {
                     <div>
                       <p className="text-gray-800 font-medium">{activity.action}</p>
                       <p className="text-gray-500 text-sm">{activity.letterTitle} • {activity.date}</p>
+                    </div>
+                    <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Link to={`/editor`}>
+                        <Button variant="ghost" size="sm" className="text-brand-600 hover:bg-brand-50">
+                          View
+                        </Button>
+                      </Link>
                     </div>
                   </li>
                 ))}
