@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 210 64% 31%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -30,7 +31,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 210 64% 31%;
 
     --radius: 0.5rem;
 
@@ -98,4 +99,32 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.editor-content {
+  @apply min-h-[60vh] p-4 focus:outline-none;
+}
+
+.editor-content p {
+  @apply mb-4;
+}
+
+.editor-content h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.editor-content h2 {
+  @apply text-2xl font-bold mb-3;
+}
+
+.editor-content h3 {
+  @apply text-xl font-bold mb-2;
+}
+
+.editor-content ul {
+  @apply list-disc pl-5 mb-4;
+}
+
+.editor-content ol {
+  @apply list-decimal pl-5 mb-4;
 }
