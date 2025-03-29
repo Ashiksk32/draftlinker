@@ -1,206 +1,58 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FileText, Mail, Twitter, Github, Linkedin, Heart, Edit, Save, Shield } from 'lucide-react';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Separator } from "@/components/ui/separator";
+import { FileText, LayoutDashboard, Edit, User } from "lucide-react";
 
 const Footer = () => {
-  const [isSmallScreen, setIsSmallScreen] = React.useState(false);
-  
-  React.useEffect(() => {
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
-    };
-    
-    // Check on mount and add resize listener
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    
-    // Clean up
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
+  const links = [
+    { name: "Home", path: "/", icon: <FileText className="h-4 w-4 mr-2" /> },
+    { name: "Editor", path: "/editor", icon: <Edit className="h-4 w-4 mr-2" /> },
+    { name: "Dashboard", path: "/dashboard", icon: <LayoutDashboard className="h-4 w-4 mr-2" /> },
+    { name: "Portfolio", path: "/portfolio", icon: <User className="h-4 w-4 mr-2" /> },
+  ];
 
   return (
-    <footer className="bg-white border-t border-gray-200 pt-10 pb-8 shadow-sm">
+    <footer className="bg-gray-50 py-8 border-t border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-8">
-          <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center mb-4">
-              <FileText className="h-6 w-6 text-brand-600 mr-2" />
-              <span className="text-xl font-semibold text-brand-800">DraftLinker</span>
-            </div>
-            <p className="text-gray-600 text-sm mb-4">
-              Create professional letters and documents with ease. Connect with Google Drive for seamless storage.
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">DraftLinker</h3>
+            <p className="text-gray-600 mb-4">
+              Create and save your professional letters directly to Google Drive.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-brand-600 transition-colors p-2 hover:bg-gray-100 rounded-full">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-brand-600 transition-colors p-2 hover:bg-gray-100 rounded-full">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-brand-600 transition-colors p-2 hover:bg-gray-100 rounded-full">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-brand-600 transition-colors p-2 hover:bg-gray-100 rounded-full">
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </a>
-            </div>
           </div>
-          
-          {isSmallScreen ? (
-            <>
-              <div className="col-span-2">
-                <Collapsible>
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full flex justify-between">
-                      <span className="font-semibold text-gray-800">Key Features</span>
-                      <span>+</span>
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="pt-2 pl-2">
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link to="/editor" className="text-gray-600 hover:text-brand-600 block py-1 flex items-center">
-                            <Edit className="h-4 w-4 mr-2" />
-                            Document Editor
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 flex items-center">
-                            <FileText className="h-4 w-4 mr-2" />
-                            Document Dashboard
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 flex items-center">
-                            <Save className="h-4 w-4 mr-2" />
-                            Google Drive Integration
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </CollapsibleContent>
-                </Collapsible>
-
-                <Collapsible className="mt-2">
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full flex justify-between">
-                      <span className="font-semibold text-gray-800">Resources</span>
-                      <span>+</span>
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="pt-2 pl-2">
-                      <ul className="space-y-2 text-sm">
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Documentation</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Guides</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Support</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">API</a></li>
-                      </ul>
-                    </div>
-                  </CollapsibleContent>
-                </Collapsible>
-
-                <Collapsible className="mt-2">
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full flex justify-between">
-                      <span className="font-semibold text-gray-800">Legal</span>
-                      <span>+</span>
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="pt-2 pl-2">
-                      <ul className="space-y-2 text-sm">
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Privacy</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Terms</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Cookie Policy</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Licenses</a></li>
-                      </ul>
-                    </div>
-                  </CollapsibleContent>
-                </Collapsible>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="col-span-1">
-                <h3 className="font-semibold text-gray-800 mb-4">Key Features</h3>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link to="/editor" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
-                      <Edit className="h-4 w-4 mr-2" />
-                      Document Editor
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
-                      <FileText className="h-4 w-4 mr-2" />
-                      Document Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
-                      <Save className="h-4 w-4 mr-2" />
-                      Google Drive Integration
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/#contact" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
-                      <Shield className="h-4 w-4 mr-2" />
-                      Security Features
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="col-span-1">
-                <h3 className="font-semibold text-gray-800 mb-4">Resources</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Documentation</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Guides</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Support</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">API</a></li>
-                </ul>
-              </div>
-              
-              <div className="col-span-1">
-                <h3 className="font-semibold text-gray-800 mb-4">Legal</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Privacy</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Terms</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Cookie Policy</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Licenses</a></li>
-                </ul>
-              </div>
-            </>
-          )}
-        </div>
-        
-        <div className="pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0 flex items-center">
-            &copy; {new Date().getFullYear()} DraftLinker. Made with <Heart className="h-3.5 w-3.5 mx-1 text-red-500" /> for better documents.
-          </p>
-          <div className="flex flex-wrap justify-center space-x-4 text-sm">
-            <Link to="/" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
-              Home
-            </Link>
-            <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
-              Dashboard
-            </Link>
-            <Link to="/editor" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
-              Editor
-            </Link>
-            <a href="#contact" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
-              Contact
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {links.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-600 hover:text-brand-600 flex items-center"
+                  >
+                    {link.icon} {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <p className="text-gray-600">
+              Have questions or need help? Reach out to our support team.
+            </p>
+            <a
+              href="mailto:support@draftlinker.com"
+              className="text-brand-600 hover:text-brand-700 inline-block mt-2"
+            >
+              support@draftlinker.com
             </a>
           </div>
+        </div>
+        <Separator className="my-6" />
+        <div className="text-center text-gray-600 text-sm">
+          &copy; {new Date().getFullYear()} DraftLinker. All rights reserved.
         </div>
       </div>
     </footer>
