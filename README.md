@@ -1,8 +1,8 @@
-# Welcome to your Lovable project
+# Welcome to your project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/12623de6-565e-4892-bc6a-d1fc5cff6e23
+**URL**: https://draftlinker.dev/projects/12623de6-565e-4892-bc6a-d1fc5cff6e23
 
 ## How can I edit this code?
 
@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/12623de6-565e-4892-bc6a-d1fc5cff6e23) and start prompting.
+Simply visit the (https://lovable.dev/projects/12623de6-565e-4892-bc6a-d1fc5cff6e23) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
