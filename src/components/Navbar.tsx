@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
-import useMobile from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, FileText, LayoutDashboard, Edit, User } from "lucide-react";
 import {
   Sheet,
@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/sheet";
 
 const Navbar = () => {
-  const { user, signIn, signOut } = useAuth();
-  const isMobile = useMobile();
+  const { user, signIn, logOut } = useAuth();
+  const isMobile = useIsMobile();
   
   const links = [
     { name: "Home", path: "/", icon: <FileText className="h-4 w-4 mr-2" /> },
@@ -43,7 +43,7 @@ const Navbar = () => {
             ))}
             <div className="ml-4">
               {user ? (
-                <Button variant="outline" onClick={signOut}>
+                <Button variant="outline" onClick={logOut}>
                   Sign Out
                 </Button>
               ) : (
@@ -79,7 +79,7 @@ const Navbar = () => {
                 ))}
                 <div className="pt-4">
                   {user ? (
-                    <Button variant="outline" onClick={signOut} className="w-full">
+                    <Button variant="outline" onClick={logOut} className="w-full">
                       Sign Out
                     </Button>
                   ) : (
