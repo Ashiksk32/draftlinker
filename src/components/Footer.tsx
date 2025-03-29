@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, Mail, Twitter, Github, Linkedin, Heart } from 'lucide-react';
+import { FileText, Mail, Twitter, Github, Linkedin, Heart, Edit, Save, Shield } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
 
@@ -59,17 +59,31 @@ const Footer = () => {
                 <Collapsible>
                   <CollapsibleTrigger asChild>
                     <Button variant="ghost" className="w-full flex justify-between">
-                      <span className="font-semibold text-gray-800">Product</span>
+                      <span className="font-semibold text-gray-800">Key Features</span>
                       <span>+</span>
                     </Button>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <div className="pt-2 pl-2">
                       <ul className="space-y-2 text-sm">
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Features</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Templates</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Integrations</a></li>
-                        <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1">Pricing</a></li>
+                        <li>
+                          <Link to="/editor" className="text-gray-600 hover:text-brand-600 block py-1 flex items-center">
+                            <Edit className="h-4 w-4 mr-2" />
+                            Document Editor
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 flex items-center">
+                            <FileText className="h-4 w-4 mr-2" />
+                            Document Dashboard
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 flex items-center">
+                            <Save className="h-4 w-4 mr-2" />
+                            Google Drive Integration
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </CollapsibleContent>
@@ -117,12 +131,32 @@ const Footer = () => {
           ) : (
             <>
               <div className="col-span-1">
-                <h3 className="font-semibold text-gray-800 mb-4">Product</h3>
+                <h3 className="font-semibold text-gray-800 mb-4">Key Features</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Features</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Templates</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Integrations</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors">Pricing</a></li>
+                  <li>
+                    <Link to="/editor" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
+                      <Edit className="h-4 w-4 mr-2" />
+                      Document Editor
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Document Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
+                      <Save className="h-4 w-4 mr-2" />
+                      Google Drive Integration
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/#contact" className="text-gray-600 hover:text-brand-600 block py-1 transition-colors flex items-center">
+                      <Shield className="h-4 w-4 mr-2" />
+                      Security Features
+                    </Link>
+                  </li>
                 </ul>
               </div>
               
@@ -160,11 +194,11 @@ const Footer = () => {
             <Link to="/dashboard" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
               Dashboard
             </Link>
-            <a href="#" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
-              Privacy
-            </a>
-            <a href="#" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
-              Terms
+            <Link to="/editor" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
+              Editor
+            </Link>
+            <a href="#contact" className="text-gray-600 hover:text-brand-600 transition-colors py-1">
+              Contact
             </a>
           </div>
         </div>
