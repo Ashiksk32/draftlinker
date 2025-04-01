@@ -1,10 +1,9 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Menu, FileText, LayoutDashboard, Edit, User } from "lucide-react";
+import { Menu, FileText, LayoutDashboard, Edit } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -20,7 +19,6 @@ const Navbar = () => {
     { name: "Home", path: "/", icon: <FileText className="h-4 w-4 mr-2" /> },
     { name: "Editor", path: "/editor", icon: <Edit className="h-4 w-4 mr-2" /> },
     { name: "Dashboard", path: "/dashboard", icon: <LayoutDashboard className="h-4 w-4 mr-2" /> },
-    { name: "Portfolio", path: "/portfolio", icon: <User className="h-4 w-4 mr-2" /> },
   ];
 
   // Check if a link is active
