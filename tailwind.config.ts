@@ -19,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+				serif: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -64,22 +68,27 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					50: '#EBF8FF',
-					100: '#BEE3F8',
-					200: '#90CDF4',
-					300: '#63B3ED',
-					400: '#4299E1',
-					500: '#3182CE',
-					600: '#2B6CB0',
-					700: '#2C5282',
-					800: '#1A365D',
-					900: '#1A202C',
+					50: '#EBF5FF',
+					100: '#E1EFFE',
+					200: '#C3DDFD',
+					300: '#A4CAFE',
+					400: '#76A9FA',
+					500: '#3F83F8',
+					600: '#1C64F2',
+					700: '#1A56DB',
+					800: '#1E429F',
+					900: '#233876',
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			boxShadow: {
+				'card': '0px 2px 8px rgba(0, 0, 0, 0.08)',
+				'nav': '0px 1px 3px rgba(0, 0, 0, 0.1)',
+				'btn': '0px 1px 2px rgba(0, 0, 0, 0.05)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -97,11 +106,21 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'fade-in': {
+					from: { opacity: '0' },
+					to: { opacity: '1' }
+				},
+				'fade-out': {
+					from: { opacity: '1' },
+					to: { opacity: '0' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'fade-out': 'fade-out 0.3s ease-out',
 			}
 		}
 	},
