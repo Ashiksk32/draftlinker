@@ -141,11 +141,11 @@
 
 /* Professional shadows */
 .shadow-card {
-  @apply shadow-[0_2px_8px_rgba(0,0,0,0.08)];
+  @apply shadow-[0_2px_8px_rgba(79,70,229,0.1)];
 }
 
 .shadow-nav {
-  @apply shadow-[0_1px_3px_rgba(0,0,0,0.1)];
+  @apply shadow-[0_1px_3px_rgba(79,70,229,0.08)];
 }
 
 /* Animations */
